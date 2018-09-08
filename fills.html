@@ -1,0 +1,81 @@
+<html>
+    <script>
+        function ycall()
+        {
+            var w=document.getElementById(300).selectedIndex;
+                var x=document.getElementsByTagName("option")[w].value;
+                
+    if (x == "" ) {
+        return;
+    } else {
+        
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var d = this.responseText;
+                document.getElementById("id1").innerHTML=d;
+            }
+        };
+        xmlhttp.open("GET","fillsi.php?q="+x,true);
+        xmlhttp.send();
+    }
+        }
+        function ycall1(n)
+        {
+            var a=n-2000;
+            var b=500+a;
+            var g=3000+a;
+            
+           
+                var u=document.getElementById(a);
+                var l= u.options[u.selectedIndex].value;
+               
+                var z=document.getElementById(b);
+                var m=z.options[z.selectedIndex].value;
+                
+    if (l == "" || m == "") {
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var p="<select name='";var s=g;var c="'>";
+                
+                  var d = this.responseText;
+                  var e="</select>";
+                document.getElementById(n).innerHTML=p+s+c+d+e;
+            }
+        };
+        xmlhttp.open("GET","fillsi2.php?q="+l+"&r="+m,true);
+        xmlhttp.send();
+    }
+        }
+        </script>
+    <body>
+        <center>
+            <form action="fills.php" method="POST">
+        <select id="300" name="300" onchange="ycall()">
+            <option value="">select department</option>
+            <option value="CSE">CSE</option>
+        </select>
+        <div id="id1"></div>
+        <input type="submit" value="submit">
+        <a href="fill.html"><button type="button">back</button></a>
+            </form>
+        </center>
+    <div id="p1"></div>
+    <div id="p2"></div>
+    <div id="p3"></div>
+    </body>
+</html>

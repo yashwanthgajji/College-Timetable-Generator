@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script>
+            function blurr()
+            {
+                var x=document.getElementById("fid").value;
+                var y=/^[0-9]{1,}$/;
+                if(!x.match(y))
+                {
+                    alert("enter only number");
+                    document.getElementById("fid").innerHTML="";
+                }
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        <form action="staff.php" method="GET">
+            <h1>ENTER FACULTY ID</h1>
+            <table>
+                <tr>
+                    <td>FACULTY ID:</td>
+                    <td><input type="text" id="fid" name="fid" onblur="blurr()" required></td>
+                </tr>
+            </table>
+            <input type="submit" value="search">
+        </form>
+    </center>
+    </body>
+</html>
